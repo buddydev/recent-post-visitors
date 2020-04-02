@@ -1,0 +1,8 @@
+.rp-visitors-recent-members-list {
+    display: flex;
+    list-style: none;
+}
+.rp-visitors-recent-members-list > li {
+    margin: 2px;
+    width: 30px;
+}
