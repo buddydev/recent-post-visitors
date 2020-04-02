@@ -13,7 +13,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$users = get_users( array( 'include' => $args['user_ids'] ) );
+$users = get_users( array( 'include' => $args['user_ids'], 'orderby' => 'include' ) );
 ?>
 
 <?php if( $users ) : ?>

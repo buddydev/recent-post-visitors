@@ -51,7 +51,7 @@ class Admin_Settings {
 	 */
 	public function setup() {
 
-		$this->menu_slug = 'bp_skeleton';
+		$this->menu_slug = 'rp_visitors_settings';
 
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
@@ -94,30 +94,36 @@ class Admin_Settings {
 			return;
 		}
 
-		$page = new Page( 'rp_visitors_settings', __( 'Recent Post Visitors', 'bp-skeleton' ) );
+		$page = new Page( 'rp_visitors_settings', __( 'Recent Post Visitors', 'recent-post-visitors' ) );
 
 		// General settings tab.
-		$general = $page->add_panel( 'general', _x( 'General', 'Admin settings panel title', 'bp-skeleton' ) );
+		$general = $page->add_panel( 'general', _x( 'General', 'Admin settings panel title', 'recent-post-visitors' ) );
 
-		$section_general = $general->add_section( 'settings', _x( 'General Settings', 'Admin settings section title', 'bp-skeleton' ) );
+		$section_general = $general->add_section( 'settings', _x( 'General Settings', 'Admin settings section title', 'recent-post-visitors' ) );
 
 		$fields = array(
 			array(
 				'name'    => 'enabled_post_types',
-				'label'   => _x( 'Select Post Types', 'Admin settings', 'bp-skeleton' ),
+				'label'   => _x( 'Select Post Types', 'Admin settings', 'recent-post-visitors' ),
 				'type'    => 'multicheck',
 				'options' => $this->get_posttypes(),
 				'default' => array( 'post' => 'post' ),
 			),
 			array(
 				'name'    => 'position',
-				'label'   => _x( 'Where to show recent visitors', 'Admin settings', 'bp-skeleton' ),
+				'label'   => _x( 'Where to show recent visitors', 'Admin settings', 'recent-post-visitors' ),
 				'type'    => 'radio',
 				'options' => array(
 					'before_content' => __( 'Before content', 'recent-post-visitors' ),
 					'after_content'  => __( 'After content', 'recent-post-visitors' ),
 				),
 				'default' => 'after_content',
+			),
+			array(
+				'name'    => 'no_of_users',
+				'label'   => _x( 'How many users to show', 'Admin settings', 'recent-post-visitors' ),
+				'type'    => 'text',
+				'default' => 5,
 			),
 		);
 
@@ -137,8 +143,8 @@ class Admin_Settings {
 	public function add_menu() {
 
 		add_options_page(
-			_x( 'Recent_Post_Visitors', 'Admin settings page title', 'bp-skeleton' ),
-			_x( 'Recent_Post_Visitors', 'Admin settings menu label', 'bp-skeleton' ),
+			_x( 'Recent Post Visitors', 'Admin settings page title', 'recent-post-visitors' ),
+			_x( 'Recent Post Visitors', 'Admin settings menu label', 'recent-post-visitors' ),
 			'manage_options',
 			$this->menu_slug,
 			array( $this, 'render' )

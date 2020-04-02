@@ -65,7 +65,8 @@ class Actions_Handler {
 	 * @return string
 	 */
 	public function render_visitors( $content ) {
-		$visitors = rp_visitors_get_post_visitors( get_the_ID() );
+		$limit    = rp_visitors_get_option( 'no_of_users' );
+		$visitors = rp_visitors_get_post_visitors( get_the_ID(), $limit );
 
 		if ( empty( $visitors ) ) {
 			return $content;
