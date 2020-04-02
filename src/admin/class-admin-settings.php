@@ -115,7 +115,7 @@ class Admin_Settings {
 				'type'    => 'radio',
 				'options' => array(
 					'before_content' => __( 'Before content', 'recent-post-visitors' ),
-					'after_content'  => __( 'Before content', 'recent-post-visitors' ),
+					'after_content'  => __( 'After content', 'recent-post-visitors' ),
 				),
 				'default' => 'after_content',
 			),
